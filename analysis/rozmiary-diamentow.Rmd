@@ -1,0 +1,94 @@
+---
+title: "Rozmiary diamentów"
+date: "2016-08-25"
+output: html_document
+---
+  
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+library(ggplot2)
+library(dplyr)
+
+smaller <- diamonds %>% 
+  filter(carat <= 2.5)
+
+library(knitr)
+library(scales)
+```
+
+Mamy dane o `r nrow(diamonds)` diamentach. Tylko
+`r nrow(diamonds) - nrow(smaller)` jest większych niż
+2.5 karata. Poniżej przedstawiony jest rozkład pozostałych:
+  
+```{r, echo = FALSE}
+smaller %>% 
+  ggplot(aes(carat)) + 
+  geom_freqpoly(binwidth = 0.01)
+```
+
+
+# 1. Wykres obrazujący różnicę wielkości diamentów w zależności od szlifu i koloru
+
+```{r Wykres}
+ggplot(diamonds, aes(x = cut, y = carat, fill = color)) +
+geom_boxplot() +
+labs(title = "Wielkość diamentów (carat) w zależności od szlifu i koloru",
+x = "Rodzaj szlifu (cut)",
+y = "Wielkość (carat)")
+
+```
+
+
+# 2. Sekcja opisująca 20 największych diamentów
+
+```{r top-diamentow }
+top_diamentow <- diamonds %>%
+arrange(desc(carat)) %>%
+slice(1:20)
+
+kable(top_diamentow)
+```
+
+# 3. Średnia wielkość tych diamentów wynosi:
+```{r}
+mean(top_diamentow$carat)
+```
+
+
+
+# 4. Analiza cen i liczności największych diamentów
+
+* chunk o nazwie srednia-cena, który liczy średnią cenę diamentów;
+```{r srednia-cena }
+srednia_cena <- mean(top_diamentow$price)
+srednia_cena
+```
+
+* chunk o nazwie liczba-diamentow, który podaje liczbę top diamentów w każdej z kategorii ze zmiennej cut;
+```{r liczba-diamentow}
+liczba_diamentow <- top_diamentow %>%
+count(cut)
+
+kable(liczba_diamentow)
+```
+
+
+
+* chunk o nazwie wykres-top, w którym znajduje się wykres słupkowy
+
+```{r wykres-top}
+ggplot(liczba_diamentow, aes(x = cut, y = n)) +
+geom_bar(stat = "identity", fill = "lightpink") +
+labs(
+title = "Liczba największych diamentów w zależności od szlifu",
+x = "Szlif (cut)",
+y = "Liczba",
+subtitle = paste0("Średnia cena dla ", nrow(top_diamentow),
+" największych diamentów wynosi ",
+dollar(srednia_cena))
+)
+```
+
+
+
+

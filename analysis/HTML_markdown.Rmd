@@ -1,0 +1,72 @@
+---
+title: "HTML_markdown"
+author: "Aleksandra"
+date: "2025-11-25"
+output: html_document
+---
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+## **Zadanie do realizacji ćwiczeń to modyfikacja dokumentu**
+* to co mogę dodać: 
+  + obrazek, 
+  + hiper link., 
+  + wykres, 
+  + tabele
+
+
+## hiper link
+
+[Strona ofizcjalna Solo Leveling](https://sololeveling.netmarble.com/en)
+
+ctrl+alt+i - tworzy fragment skryptowy R
+
+
+## Postać fantastyczna
+
+Sung Jinwoo główny bohater manhwy / anime i gier *Solo Leveling*
+
+![*Sung Jinwoo*](Jinwoo.png)
+
+
+## Tabela i wykres
+
+| Imiona       | wiek |
+|--------------|------|
+| Sung Jinwoo  |   24 |
+| Sung Jinah   |   16 |
+| Cha Hae-In   |   22 |
+
+
+```{r}
+library(ggplot2)
+
+# Dane
+df <- data.frame(
+  postac = c("Sung Jinwoo", "Sung Jinah", "Cha Hae-In"),
+  wiek = c(24, 16, 22 )
+)
+
+# Wykres
+ggplot(df, aes(x = postac, y = wiek)) +
+  geom_col() +
+  scale_fill_manual(values = c(
+    "Sung Jinwoo" = "#41106E",
+    "Sung Jinah"  = "#2D7AAD",
+    "Cha Hae-In"  = "#66160A"
+  )) +
+  labs(
+    title = "Wiek postaci",
+    x = "Postać",
+    y = "Wiek"
+  ) +
+  theme_minimal() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+```
+
+
+
