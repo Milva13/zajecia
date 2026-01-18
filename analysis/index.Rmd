@@ -8,4 +8,11 @@ editor_options:
   chunk_output_type: console
 ---
 
-Welcome to my research website.
+# **Szybka stronka w workflowr**
+
+Strona ta powstała na potrzeby realizacji ćwiczeń z przedmiotu Programowanie w R.
+
+## **Poniżej podstrona dotycząca wspaniałego universum z Solo Leveling**.
+
+- [*rozmiary diamentow*](rozmiary-diamentow.html)
++ [*Solo Leveling*](HTML_markdown.html)

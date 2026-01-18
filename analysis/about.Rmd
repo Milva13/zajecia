@@ -7,4 +7,18 @@ editor_options:
   chunk_output_type: console
 ---
 
-Describe your project.
+# Niestety bardzo mało wiem...
+
+Jedyne czego się dowiedziałam o ćwiczeniach, na których mnie nie było na skutek choroby, to że większości nic niedziałało :(
+
+Żeby nie byłu tu tak smutno i pusto to dam zdjęcie.
+
+
+## **Słodki kotek sobei śpi**
+
+![*słodki koteczek*](slodki_kotek.jpg)
+
+
+## *Zachęcam do sprawdzenia*:
+- [*rozmiary diamentow*](rozmiary-diamentow.html)
+- [*Solo Leveling*](HTML_markdown.html)
